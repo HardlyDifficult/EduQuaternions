@@ -8,9 +8,6 @@ public class FromTo : MonoBehaviour
   {
     Vector3 directionToCamera
       = Camera.main.transform.position - transform.position;
-    //Quaternion deltaRotation
-    //  = Quaternion.FromToRotation(transform.up, directionToCamera);
-    //transform.up = deltaRotation * transform.up;
 
 
 

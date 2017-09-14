@@ -20,13 +20,14 @@ public class MirrorRotation : MonoBehaviour
     switch (mirrorType)
     {
       case MirrorType.ParentChild:
-        transform.rotation = parent.transform.rotation * child.transform.localRotation;
+       
+        transform.localRotation = parent.transform.localRotation * (child == null ? Quaternion.identity : child.transform.localRotation);
         break;
       case MirrorType.ChildParent_Wrong:
-        transform.rotation = child.transform.localRotation * parent.transform.rotation;
+        transform.localRotation = (child == null ? Quaternion.identity : child.transform.localRotation) * parent.transform.rotation;
         break;
       case MirrorType.ParentInverse:
-        transform.rotation = Quaternion.Inverse(parent.transform.rotation);
+        transform.localRotation = Quaternion.Inverse(parent.transform.rotation);
         break;
       default:
         break;

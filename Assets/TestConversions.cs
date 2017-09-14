@@ -9,16 +9,16 @@ public class TestConversions : MonoBehaviour
 
   protected void Update()
   {
-Vector3 axis;
-float angle;
-transform.rotation.ToAngleAxis(out angle, out axis);
-angle *= Mathf.Deg2Rad;
+    Vector3 axis;
+    float angle;
+    transform.rotation.ToAngleAxis(out angle, out axis);
+    angle *= Mathf.Deg2Rad;
 
-Quaternion rotation = new Quaternion(
-  axis.x * Mathf.Sin(angle / 2),
-  axis.y * Mathf.Sin(angle / 2),
-  axis.z * Mathf.Sin(angle / 2),
-  Mathf.Cos(angle / 2));
+    Quaternion rotation = new Quaternion(
+      axis.x * Mathf.Sin(angle / 2),
+      axis.y * Mathf.Sin(angle / 2),
+      axis.z * Mathf.Sin(angle / 2),
+      Mathf.Cos(angle / 2));
 
 
 

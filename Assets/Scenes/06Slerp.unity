@@ -314,9 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cd0b8ae62d01647a4353532162cf81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
+  speed: 1
   usePercentComplete: 0
-  useSlerp: 0
+  useSlerp: 1
 --- !u!1 &701816971
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +681,15 @@ Prefab:
       propertyPath: m_Name
       value: Logo (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 23816188676212562, guid: 21f645403157a3743af4ba5ab5294157,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 178076da22ccf734db182fd2d69abb2d, type: 2}
+    - target: {fileID: 1479675745620194, guid: 21f645403157a3743af4ba5ab5294157, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114787264564559188, guid: 21f645403157a3743af4ba5ab5294157, type: 2}
     - {fileID: 114014174157629170, guid: 21f645403157a3743af4ba5ab5294157, type: 2}
@@ -754,6 +763,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23816188676212562, guid: 21f645403157a3743af4ba5ab5294157,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 178076da22ccf734db182fd2d69abb2d, type: 2}
     m_RemovedComponents:
     - {fileID: 114787264564559188, guid: 21f645403157a3743af4ba5ab5294157, type: 2}
     - {fileID: 114014174157629170, guid: 21f645403157a3743af4ba5ab5294157, type: 2}
@@ -775,9 +789,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cd0b8ae62d01647a4353532162cf81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 0.5
   usePercentComplete: 1
-  useSlerp: 0
+  useSlerp: 1
 --- !u!1 &2008822183
 GameObject:
   m_ObjectHideFlags: 0

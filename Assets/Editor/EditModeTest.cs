@@ -4,8 +4,106 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 
-public class NewEditModeTest
+public class EditModeTest
 {
+
+  [Test]
+  public void QTQ()
+  {
+    Quaternion parentRotation = Random.rotation;
+    Quaternion childRotation = Random.rotation;
+    Quaternion rotation = parentRotation * childRotation;
+  }
+
+  [Test]
+  public void Euler()
+  {
+    Quaternion randomRotation = Random.rotation;
+    // To Euler
+    Vector3 inEuler = randomRotation.eulerAngles;
+    // And back
+    Quaternion inQuaternion = Quaternion.Euler(inEuler);
+  }
+
+  [Test]
+  public void AxisAngle()
+  {
+    Quaternion randomRotation = Random.rotation;
+    // To Axis-Angle
+    float angle;
+    Vector3 axis;
+    randomRotation.ToAngleAxis(out angle, out axis);
+    // And back
+    Quaternion rotation = Quaternion.AngleAxis(angle, axis);
+  }
+
+  [Test]
+  public void QuaternionConstructor()
+  {
+    Quaternion rotation = new Quaternion(0, 0, 0, 1);
+    // rotation == Quaternion.identity
+
+
+    Quaternion invalidQuaternion = default(Quaternion);
+    // invalidQuaternion == new Quaternion(0, 0, 0, 0) 
+    // This is not normalized, therefore not a valid quaternion
+  }
+
+  [Test]
+  public void RotateTowards()
+  {
+    Transform transform = null; // ...
+    Quaternion targetRotation = Quaternion.identity; // ...
+
+    transform.rotation = Quaternion.RotateTowards(
+      transform.rotation, targetRotation, 500f * Time.deltaTime);
+  }
+
+  [Test]
+  public void QuaternionInverse()
+  {
+    Quaternion randomRotation = Random.rotation;
+    Quaternion inverseRotation = Quaternion.Inverse(randomRotation);
+  }
+
+  [Test]
+  public void QuaternionTimesVector()
+  {
+    Transform transform = null; // ...
+    GameObject center = null; // ...
+    Vector3 offsetPosition = new Vector3(1, 0, 0); // ...
+
+    transform.position
+      = center.transform.position + center.transform.rotation * offsetPosition;
+  }
+
+  [Test]
+  public void DotProduct()
+  {
+    Quaternion a = Random.rotation;
+    Quaternion b = Random.rotation;
+    float dot = Quaternion.Dot(a, b);
+  }
+
+  [Test]
+  public void Angle()
+  {
+    Quaternion a = Random.rotation;
+    Quaternion b = Random.rotation;
+    float angle = Quaternion.Angle(a, b);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
   [Test]
   public void Dot()
@@ -18,6 +116,20 @@ public class NewEditModeTest
     float delta = dot - Quaternion.Dot(a, b);
     Assert.IsTrue(Mathf.Abs(delta) < .1);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   [Test]
   public void RotateVector()
@@ -71,13 +183,6 @@ public class NewEditModeTest
     Assert.IsTrue(delta < .1);
   }
 
-  [Test]
-  public void EulerExample()
-  {
-    Quaternion randomRotation = Random.rotation;
-    Vector3 inEuler = randomRotation.eulerAngles;
-    Quaternion inQuaternion = Quaternion.Euler(inEuler);
-  }
 
   [Test]
   public void Testing()

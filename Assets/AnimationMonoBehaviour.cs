@@ -25,7 +25,7 @@ public class AnimationMonoBehaviour : MonoBehaviour
 
   protected void Start()
   {
-    BroadcastUpdate(transform.rotation.eulerAngles, false);
+    BroadcastUpdate(transform.localRotation.eulerAngles, false);
   }
 
   protected void Update()
@@ -52,7 +52,7 @@ public class AnimationMonoBehaviour : MonoBehaviour
       RotationMonoBehaviour iCare = iCareList[i];
       float angle;
       Vector3 axis;
-      transform.rotation.ToAngleAxis(out angle, out axis);
+      transform.localRotation.ToAngleAxis(out angle, out axis);
       iCare.OnRotationUpdate(euler, axis, angle, isAxisAngle);
     }
   }
@@ -101,12 +101,12 @@ public class AnimationMonoBehaviour : MonoBehaviour
     }
     Quaternion initialRotation = Quaternion.AngleAxis(0, axis);
 
-    while (Mathf.Abs(Quaternion.Dot(initialRotation, transform.rotation)) < .9999)
+    while (Mathf.Abs(Quaternion.Dot(initialRotation, transform.localRotation)) < .9999)
     {
-      transform.rotation = Quaternion.RotateTowards(transform.rotation, initialRotation, 500f * Time.deltaTime);
+      transform.localRotation = Quaternion.RotateTowards(transform.localRotation, initialRotation, 500f * Time.deltaTime);
       yield return null;
     }
-    transform.rotation = initialRotation;
+    transform.localRotation = initialRotation;
 
     yield return new WaitForSeconds(.25f);
 
@@ -141,7 +141,7 @@ public class AnimationMonoBehaviour : MonoBehaviour
     bool isAxisAngle)
   {
     Quaternion rotation = Quaternion.Euler(euler);
-    transform.rotation = rotation;
+    transform.localRotation = rotation;
     BroadcastUpdate(euler, isAxisAngle);
   }
 
@@ -155,7 +155,7 @@ public class AnimationMonoBehaviour : MonoBehaviour
       message.SetActive(true);
     }
     Quaternion rotation = Quaternion.AngleAxis(angle, axis);
-    transform.rotation = rotation;
+    transform.localRotation = rotation;
     BroadcastUpdate(axis, angle, isAxisAngle);
   }
 }

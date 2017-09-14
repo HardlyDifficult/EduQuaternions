@@ -8,6 +8,7 @@ public class LookRotation : MonoBehaviour
   {
     Vector3 directionToCamera
       = Camera.main.transform.position - transform.position;
+
     Quaternion targetRotation
       = Quaternion.LookRotation(-directionToCamera, Vector3.up);
     transform.rotation = targetRotation;

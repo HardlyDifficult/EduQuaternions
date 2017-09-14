@@ -7,16 +7,18 @@ public class RotateVertex : MonoBehaviour
   [SerializeField]
   GameObject model;
 
-  Vector3 position;
+  Vector3 positionOffset;
 
   protected void Start()
   {
-    position = transform.position;
+    positionOffset = transform.position - model.transform.position;
   }
 
   protected void Update()
   {
     Debug.DrawLine(transform.position, model.transform.position, Color.black);
-    transform.position = model.transform.rotation * position;
+
+
+    transform.position = model.transform.position + model.transform.rotation * positionOffset;
   }
 }
